@@ -1,0 +1,20 @@
+{
+  "name": "Binary Increment",
+  "blank_symbol": "_",
+  "states": ["scan", "carry", "halt"],
+  "start_state": "scan",
+  "accept_states": ["halt"],
+  "reject_states": [],
+  "alphabet": ["0", "1", "_"],
+  "initial_tape": ["1", "0", "1", "1", "_"],
+  "initial_head": 0,
+  "rules": [
+    ["scan", "0", "scan", "0", "R"],
+    ["scan", "1", "scan", "1", "R"],
+    ["scan", "_", "carry", "_", "L"],
+    ["carry", "1", "carry", "0", "L"],
+    ["carry", "0", "halt", "1", "S"],
+    ["carry", "_", "halt", "1", "S"]
+  ]
+}
+

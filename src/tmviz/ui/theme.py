@@ -1,0 +1,27 @@
+"""Theme constants for the renderer."""
+
+WINDOW_SIZE = (1280, 720)
+MIN_WINDOW_SIZE = (960, 600)
+COMPACT_BREAKPOINT = (1180, 680)
+
+FONT_STACK = ("Cascadia Mono", "JetBrains Mono", "IBM Plex Mono", "Consolas")
+
+BACKGROUND = (5, 12, 9)
+BACKGROUND_GLOW = (10, 28, 19)
+TEXT = (154, 248, 174)
+MUTED_TEXT = (88, 145, 101)
+DIM_TEXT = (58, 102, 71)
+CYAN = (92, 235, 255)
+CYAN_SOFT = (22, 67, 71)
+AMBER = (255, 195, 84)
+RED = (255, 96, 96)
+TRACK = (14, 34, 23)
+GRID = (24, 58, 39)
+SCANLINE = (12, 33, 20, 36)
+NOISE = (44, 92, 58, 18)
+SURFACE_TINT = (10, 27, 18, 180)
+SURFACE_EDGE = (34, 87, 57)
+ACTIVE_GLOW = (87, 255, 196, 82)
+HEAD_FILL = (9, 44, 38)
+HEAD_OUTLINE = (93, 235, 255)
+

@@ -1,0 +1,18 @@
+{
+  "name": "Busy Beaver (2 State)",
+  "blank_symbol": "_",
+  "states": ["A", "B", "HALT"],
+  "start_state": "A",
+  "accept_states": ["HALT"],
+  "reject_states": [],
+  "alphabet": ["1", "_"],
+  "initial_tape": ["_"],
+  "initial_head": 0,
+  "rules": [
+    ["A", "_", "B", "1", "R"],
+    ["A", "1", "B", "1", "L"],
+    ["B", "_", "A", "1", "L"],
+    ["B", "1", "HALT", "1", "R"]
+  ]
+}
+

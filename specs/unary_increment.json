@@ -1,0 +1,16 @@
+{
+  "name": "Unary Increment",
+  "blank_symbol": "_",
+  "states": ["q0", "halt"],
+  "start_state": "q0",
+  "accept_states": ["halt"],
+  "reject_states": [],
+  "alphabet": ["1", "_"],
+  "initial_tape": ["1", "1", "1", "_"],
+  "initial_head": 0,
+  "rules": [
+    ["q0", "1", "q0", "1", "R"],
+    ["q0", "_", "halt", "1", "S"]
+  ]
+}
+
