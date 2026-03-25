@@ -54,6 +54,12 @@ Run lint:
 ruff check
 ```
 
+Run type checks:
+
+```bash
+mypy src
+```
+
 ## Where To Change Things
 
 | Area | Place to start |
@@ -109,7 +115,9 @@ If you change any of the following, update the docs in the same change:
 - code matches the current architecture
 - tests pass locally
 - lint passes locally
+- mypy passes locally
+- `python -m tmviz --help` succeeds
 - spec examples are valid
 - README and `docs/` still reflect the real behavior
 - screenshots are refreshed if the visible UI changed materially
-
+- GitHub Actions CI is expected to pass on Python `3.12`

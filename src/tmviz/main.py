@@ -2,10 +2,16 @@
 
 from __future__ import annotations
 
+import argparse
+import os
+from collections.abc import Sequence
 from pathlib import Path
+
+os.environ.setdefault("PYGAME_HIDE_SUPPORT_PROMPT", "1")
 
 import pygame
 
+from tmviz import __version__
 from tmviz.app.commands import PauseCommand, QuitCommand, RunCommand
 from tmviz.app.controller import AppController
 from tmviz.factory.machine_factory import MachineSpecFactory
@@ -17,7 +23,24 @@ from tmviz.ui.renderer import Renderer
 from tmviz.ui.theme import WINDOW_SIZE
 
 
-def main() -> None:
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Turing machine simulator and visualizer.")
+    parser.add_argument(
+        "--spec",
+        type=Path,
+        help="Path to a JSON machine spec to load at startup.",
+    )
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
+    )
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> None:
+    args = build_parser().parse_args(argv)
+
     configure_logging()
     pygame.init()
     pygame.display.set_caption("Turing Machine Visualizer")
@@ -25,7 +48,10 @@ def main() -> None:
     clock = pygame.time.Clock()
 
     project_root = Path(__file__).resolve().parents[2]
-    spec_paths = sorted((project_root / "specs").glob("*.json"))
+    if args.spec is not None:
+        spec_paths = [args.spec]
+    else:
+        spec_paths = sorted((project_root / "specs").glob("*.json"))
 
     event_bus = EventBus()
     controller = AppController(factory=MachineSpecFactory(), event_bus=event_bus)

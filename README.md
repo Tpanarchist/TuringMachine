@@ -1,5 +1,8 @@
 # Turing Machine Visualizer
 
+[![CI](https://github.com/Tpanarchist/TuringMachine/actions/workflows/ci.yml/badge.svg)](https://github.com/Tpanarchist/TuringMachine/actions/workflows/ci.yml)
+![Python 3.12](https://img.shields.io/badge/python-3.12-blue)
+
 A desktop Turing machine simulator and visualizer built with Python 3.12,
 [`pygame-ce`](https://pyga.me/), and [`transitions`](https://github.com/pytransitions/transitions).
 It separates the mathematical Turing machine from the simulator shell, so the
@@ -46,8 +49,10 @@ window, and enforces a minimum size of `960x600`.
 
 ```bash
 python -m tmviz
+python -m tmviz --help
 pytest -q
 ruff check
+mypy src
 ```
 
 After an editable install you can also launch the simulator with:
@@ -55,6 +60,17 @@ After an editable install you can also launch the simulator with:
 ```bash
 tmviz
 ```
+
+## CI
+
+GitHub Actions runs the reproducible project checks in
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) on pushes to `main` and
+on pull requests. The workflow is pinned to Python `3.12` and runs:
+
+- `ruff check`
+- `mypy src`
+- `pytest -q`
+- `python -m tmviz --help`
 
 ## Controls
 
